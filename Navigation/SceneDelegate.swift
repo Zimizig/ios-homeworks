@@ -13,20 +13,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func createFirstController() -> UINavigationController {
         let firstNC = UINavigationController(rootViewController: FeedViewController())
-        firstNC.tabBarItem = UITabBarItem(title: "Новости", image: UIImage(systemName: "lineweight"), tag: 0)
+        firstNC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
         return firstNC
     }
     
     func createSecondController() -> UINavigationController {
-        let SecondNC = UINavigationController(rootViewController: ProfileViewController())
-        SecondNC.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person.crop.circle.fill"), tag: 1)
+        let SecondNC = UINavigationController(rootViewController: SecondViewController())
+
+        SecondNC.navigationBar.tintColor = .white
+        SecondNC.navigationBar.isTranslucent = true
+        SecondNC.navigationBar.backgroundColor = .white
+    
+        
+        SecondNC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1)
         return SecondNC
     }
     
     func createTabBar() -> UITabBarController {
         let tabBar = UITabBarController()
         tabBar.viewControllers = [createFirstController(), createSecondController()]
-        tabBar.tabBar.backgroundColor = .systemGray
+        tabBar.tabBar.backgroundColor = .white
         return tabBar
     }
 
