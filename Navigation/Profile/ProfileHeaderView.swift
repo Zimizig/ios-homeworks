@@ -10,6 +10,18 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private lazy var statusTextField: UITextField = {
+        let statusTextField = UITextField()
+        statusTextField.translatesAutoresizingMaskIntoConstraints = false
+        statusTextField.layer.cornerRadius = 12
+        statusTextField.backgroundColor = .white
+        statusTextField.layer.borderWidth = 1
+        statusTextField.layer.borderColor = UIColor.black.cgColor
+        statusTextField.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: 0))
+        statusTextField.leftViewMode = .always
+        return statusTextField
+    }()
+    
     private lazy var profileNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +90,7 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupView() {
+        addSubview(statusTextField)
         addSubview(profileNameLabel)
         addSubview(profileStatuslabel)
         addSubview(profileUIСrutchLabel)
@@ -94,14 +107,21 @@ class ProfileHeaderView: UIView {
             profileNameLabel.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 16),
             profileNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
+            
             profileStatuslabel.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 16),
             profileStatuslabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            profileStatuslabel.bottomAnchor.constraint(equalTo: profileUIButton.topAnchor, constant: -34),
+            profileStatuslabel.bottomAnchor.constraint(equalTo: statusTextField.topAnchor, constant: -16),
             
-            profileUIButton.topAnchor.constraint(equalTo: profileUIImageView.bottomAnchor, constant: 16),
+            profileUIButton.widthAnchor.constraint(equalToConstant: 50),
+            profileUIButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             profileUIButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             profileUIButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            profileUIButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            statusTextField.topAnchor.constraint(equalTo: profileStatuslabel.bottomAnchor, constant: 10),
+            statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10)
         ])
     }
 }
