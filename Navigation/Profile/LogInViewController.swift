@@ -25,7 +25,9 @@ class LogInViewController: UIViewController {
         textField.backgroundColor = .systemGray6
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textColor = .black
+        textField.placeholder = "Your e-mail or phone number"
         textField.font = UIFont.systemFont(ofSize: 16)
+        //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         textField.tintColor = UIColor.placeholderText
         textField.autocapitalizationType = .none
         return textField
@@ -39,7 +41,10 @@ class LogInViewController: UIViewController {
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textColor = .black
         textField.tintColor = UIColor.placeholderText
+        textField.placeholder = "password"
+        textField.isSecureTextEntry = true
         textField.font = UIFont.systemFont(ofSize: 16)
+        //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         textField.autocapitalizationType = .none
         return textField
     }()
@@ -55,6 +60,17 @@ class LogInViewController: UIViewController {
         return stackView
     }()
     
+    let button: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = UIColor(named: "BlueHex")
+        button.layer.cornerRadius = 10
+        button.setTitle("Login", for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +84,7 @@ class LogInViewController: UIViewController {
         textFieldsStackView.addArrangedSubview(loginTextField)
         textFieldsStackView.addArrangedSubview(passwordTextField)
         self.view.addSubview(textFieldsStackView)
+        self.view.addSubview(button)
         
     }
 
@@ -77,8 +94,7 @@ class LogInViewController: UIViewController {
             
             //ImageView
             imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120),
-            //imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            //imageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 16),
+            
             imageView.heightAnchor.constraint(equalToConstant: 100),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -87,12 +103,28 @@ class LogInViewController: UIViewController {
             textFieldsStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 120),
             textFieldsStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             textFieldsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-            textFieldsStackView.heightAnchor.constraint(equalToConstant: 100)
+            textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
+            
+            //Button
+            
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            button.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
         
         ])
         
-        
     }
+}
+
+    
+ 
+        
+        
+ 
+    
+        
+    
     
 
-}
+
