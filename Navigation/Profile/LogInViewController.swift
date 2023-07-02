@@ -22,7 +22,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
-        textField.backgroundColor = .systemGray
+        textField.backgroundColor = .systemGray6
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textColor = .black
         textField.font = UIFont.systemFont(ofSize: 16)
@@ -35,7 +35,7 @@ class LogInViewController: UIViewController {
         let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
-        textField.backgroundColor = .systemGray
+        textField.backgroundColor = .systemGray6
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textField.textColor = .black
         textField.tintColor = UIColor.placeholderText
@@ -45,13 +45,13 @@ class LogInViewController: UIViewController {
     }()
     
     let textFieldsStackView: UIStackView = {
-        let stackView = UIStackView(frame: CGRect(x: 10, y: 10, width: 200, height: 100))
+        let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
-        stackView.backgroundColor = .green
-        //stackView.translatesAutoresizingMaskIntoConstraints = false
+        //stackView.backgroundColor = .green
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -65,6 +65,8 @@ class LogInViewController: UIViewController {
     
     private func setupView(){
         self.view.addSubview(imageView)
+        textFieldsStackView.addArrangedSubview(loginTextField)
+        textFieldsStackView.addArrangedSubview(passwordTextField)
         self.view.addSubview(textFieldsStackView)
         
     }
@@ -80,13 +82,13 @@ class LogInViewController: UIViewController {
             imageView.heightAnchor.constraint(equalToConstant: 100),
             imageView.widthAnchor.constraint(equalToConstant: 100),
             imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-         /*
+         
             //StackView
             textFieldsStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 120),
             textFieldsStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             textFieldsStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             textFieldsStackView.heightAnchor.constraint(equalToConstant: 100)
-        */
+        
         ])
         
         
