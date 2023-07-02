@@ -18,7 +18,7 @@ class LogInViewController: UIViewController {
     }()
     
     
-    let loginTextField: UITextField = {
+     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
@@ -30,10 +30,11 @@ class LogInViewController: UIViewController {
         //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         textField.tintColor = UIColor.placeholderText
         textField.autocapitalizationType = .none
+        textField.delegate = self
         return textField
     }()
     
-    let passwordTextField: UITextField = {
+   lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.layer.cornerRadius = 10
         textField.layer.borderWidth = 0.5
@@ -44,6 +45,7 @@ class LogInViewController: UIViewController {
         textField.placeholder = "password"
         textField.isSecureTextEntry = true
         textField.font = UIFont.systemFont(ofSize: 16)
+        textField.delegate = self
         //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         textField.autocapitalizationType = .none
         return textField
@@ -60,23 +62,27 @@ class LogInViewController: UIViewController {
         return stackView
     }()
     
-    let button: UIButton = {
+    private lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "BlueHex")
         button.layer.cornerRadius = 10
         button.setTitle("Login", for: .normal)
         button.tintColor = .white
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
     
+    var isShowingKeybord = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         setupConstraints()
+        setKeyboardNotification()
     }
     
     private func setupView(){
@@ -115,6 +121,49 @@ class LogInViewController: UIViewController {
         ])
         
     }
+    
+    
+    @objc func buttonPressed() {
+        let profileVC = ProfileViewController()
+        navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+
+    
+    private func setKeyboardNotification() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+    @objc func keyboardWillShow(notification: Notification) {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if isShowingKeybord {
+                    self.view.frame.origin.y = -keyboardSize.height/2
+                }
+            }
+        }
+    @objc func keyboardWillHide(notification: Notification) {
+            self.view.frame.origin.y = 0
+        }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+
+override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    super.touchesBegan(touches, with: event)
+    self.view.endEditing(true)
+}
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        isShowingKeybord = true
+        button.alpha = 0.8
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        isShowingKeybord = false
+        button.alpha = 1
+        
+    }
+
 }
 
     
