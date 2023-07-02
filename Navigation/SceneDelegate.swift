@@ -18,12 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createSecondController() -> UINavigationController {
-        let SecondNC = UINavigationController(rootViewController: ProfileViewController())
+        let SecondNC = UINavigationController(rootViewController: LogInViewController())
 
-        SecondNC.navigationBar.tintColor = .white
-        SecondNC.navigationBar.isTranslucent = true
+        //SecondNC.navigationBar.tintColor = .white
+        //SecondNC.navigationBar.isTranslucent = true
+        
+        SecondNC.view.backgroundColor = .white
         SecondNC.navigationBar.backgroundColor = .white
-    
+        SecondNC.navigationBar.isHidden = true
         
         SecondNC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1)
         return SecondNC

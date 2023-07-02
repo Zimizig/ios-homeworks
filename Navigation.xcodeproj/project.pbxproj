@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047BE0D92A51D14A00517224 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BE0D82A51D14A00517224 /* LogInViewController.swift */; };
 		2C082E4129928FB000EBB9DE /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C082E4029928FB000EBB9DE /* PostViewController.swift */; };
 		2C082E432992945A00EBB9DE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C082E422992945A00EBB9DE /* Post.swift */; };
 		2C082E4529929BD600EBB9DE /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C082E4429929BD600EBB9DE /* InfoViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		047BE0D82A51D14A00517224 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		2C082E4029928FB000EBB9DE /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		2C082E422992945A00EBB9DE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2C082E4429929BD600EBB9DE /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				2C239C7529FF1F3000A58FB3 /* ProfileViewController.swift */,
+				047BE0D82A51D14A00517224 /* LogInViewController.swift */,
 				2C239C7029FF155A00A58FB3 /* ProfileHeaderView.swift */,
 			);
 			path = Profile;
@@ -168,6 +171,7 @@
 				2C239C7129FF155A00A58FB3 /* ProfileHeaderView.swift in Sources */,
 				2C082E432992945A00EBB9DE /* Post.swift in Sources */,
 				2C082E4529929BD600EBB9DE /* InfoViewController.swift in Sources */,
+				047BE0D92A51D14A00517224 /* LogInViewController.swift in Sources */,
 				2C9D73282991DB25006F52FC /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
