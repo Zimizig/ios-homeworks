@@ -22,7 +22,7 @@ struct PostModel {
 
 var posts = [
     
-PostModel(author: "Alex", description: "About chinese Art", image: "logo", likes: 50, views: 100),
+PostModel(author: "Alex. About Chinese Art ", description: "About chinese Art", image: "Pepedie", likes: 50, views: 100),
 PostModel(author: "Olga", description: "Modern Policy", image: "logo", likes: 30, views: 120),
 PostModel(author: "Sonya", description: "History", image: "logo", likes: 70, views: 90),
 PostModel(author: "Kirill", description: "Geography", image: "logo", likes: 30, views: 40)
