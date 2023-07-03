@@ -20,9 +20,9 @@ class PostTableViewCell: UITableViewCell {
     }()
     
     var postImageView: UIImageView = {
+        let width = UIScreen.main.bounds.width
         
-        
-        let image = UIImageView()
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
         image.contentMode = .scaleAspectFit
         image.backgroundColor = .black
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -90,12 +90,8 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        
-        let width = UIScreen.main.bounds.width
-        
-        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor).isActive = true
-        postImageView.heightAnchor.constraint(equalToConstant: width).isActive = true
-        postImageView.widthAnchor.constraint(equalToConstant: width).isActive = true 
+        postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         
         descriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
         descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
