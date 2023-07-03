@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController {
     
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .cyan
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -55,9 +55,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         posts.count
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
@@ -74,7 +71,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 /*
 
-Используйте ProfileTableHederView в качестве HeaderForSection для нулевой секции.
+
 Создайте файл PostTableViewCell.swift и добавьте в него класс UITableViewCell с именем PostTableViewCell.
 Реализуйте верстку в только что созданном классе согласно макету Lesson_6_Layout_3. Используйте Auto Layout.
 Используйте созданную ячейку для отображения контента публикации.
