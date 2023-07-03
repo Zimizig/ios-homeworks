@@ -41,8 +41,6 @@ class PostTableViewCell: UITableViewCell {
     var likesLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor.black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -69,7 +67,7 @@ class PostTableViewCell: UITableViewCell {
     private let hStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.backgroundColor = .cyan
+        //stackView.backgroundColor = .cyan
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -104,25 +102,25 @@ class PostTableViewCell: UITableViewCell {
         hStack.addArrangedSubview(likesLabel)
         hStack.addArrangedSubview(viewsLabel)
         contentView.addSubview(vStack)
-        contentView.addSubview(hStack)
+        //contentView.addSubview(hStack)
     }
     
     private func setConstraints() {
         
-        authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        authorLabel.topAnchor.constraint(equalTo: vStack.topAnchor).isActive = true
+        authorLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
+        authorLabel.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
         authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16).isActive = true
-        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: 16).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: -16).isActive = true
         postImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
         postImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
         
-        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: -16).isActive = true
-        descriptionText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        descriptionText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16).isActive = true
+        descriptionText.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
+        descriptionText.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 16).isActive = true
+        descriptionText.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -16).isActive = true
         
        
         vStack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
@@ -130,11 +128,13 @@ class PostTableViewCell: UITableViewCell {
         vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
+        
+        /*
         hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 16).isActive = true
         hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         hStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        */
     }
     
     
