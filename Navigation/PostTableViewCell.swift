@@ -58,8 +58,8 @@ class PostTableViewCell: UITableViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         
-        //stackView.distribution = .fillEqually
-        //stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -67,7 +67,6 @@ class PostTableViewCell: UITableViewCell {
     private let hStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        //stackView.backgroundColor = .cyan
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +84,6 @@ class PostTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     func configure(post: PostModel) {
         authorLabel.text = post.author
         postImageView.image = UIImage(named: post.image)
@@ -101,8 +99,9 @@ class PostTableViewCell: UITableViewCell {
         vStack.addArrangedSubview(descriptionText)
         hStack.addArrangedSubview(likesLabel)
         hStack.addArrangedSubview(viewsLabel)
+        
         contentView.addSubview(vStack)
-        //contentView.addSubview(hStack)
+        contentView.addSubview(hStack)
     }
     
     private func setConstraints() {
@@ -112,29 +111,26 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
         authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16).isActive = true
-        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: -16).isActive = true
+        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: -8).isActive = true
         postImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
         postImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
         
-        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 8).isActive = true
         descriptionText.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
         descriptionText.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 16).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -16).isActive = true
         
-       
         vStack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
+        hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 4).isActive = true
+        hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         
-        /*
-        hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 16).isActive = true
-        hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-        hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-        hStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        */
+    
     }
     
     

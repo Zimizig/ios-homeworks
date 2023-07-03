@@ -68,6 +68,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         return header
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        800
+    }
     
 }
 
