@@ -19,16 +19,22 @@ class ProfileViewController: UIViewController {
 
     ]
     
-    private let tableView: UITableView = {
+    lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .cyan
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setUIElements()
+        setConstraints()
     }
     
     private func setUIElements() {
@@ -36,19 +42,38 @@ class ProfileViewController: UIViewController {
     }
     
     private func setConstraints() {
-         
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
     
 }
 
-/*
-Создайте массив из минимум четырех публикаций. Все данные, в том числе изображения для публикаций, используйте на свой вкус.
-Вам нужно удалить весь ранее написанный код в классе ProfileViewController.
-Внимание! Если вы выполнили прошлое задание не в отдельном классе-наследнике UIView, то нужно перенести всю верстку в отдельный файл ProfileTableHederView.swift, в котором должен быть класс-наследник UIView с именем ProfileHeaderView.
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        posts.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ProfileHeaderView(reuseIdentifier: "header")
+        return header
+    }
+    
+    
+}
 
-Добавьте экземпляр класса UITableView и закрепите его к краям экрана.
-Класс ProfileViewController должен реализовать протоколы UITableViewDelegate и UITableViewDataSource. Примените extension инструмент.
-Ранее созданный массив с публикациями используйте в качестве источника данных для таблицы.
+/*
+
 Используйте ProfileTableHederView в качестве HeaderForSection для нулевой секции.
 Создайте файл PostTableViewCell.swift и добавьте в него класс UITableViewCell с именем PostTableViewCell.
 Реализуйте верстку в только что созданном классе согласно макету Lesson_6_Layout_3. Используйте Auto Layout.

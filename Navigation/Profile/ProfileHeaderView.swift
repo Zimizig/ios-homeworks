@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private lazy var statusTextField: UITextField = {
         let statusTextField = UITextField()
@@ -76,8 +76,8 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupView()
     }
     
@@ -98,6 +98,8 @@ class ProfileHeaderView: UIView {
         addSubview(profileUIButton)
         
         NSLayoutConstraint.activate([
+            
+            self.heightAnchor.constraint(equalToConstant: 220),
             profileUIImageView.widthAnchor.constraint(equalToConstant: 120),
             profileUIImageView.heightAnchor.constraint(equalToConstant: 120),
             profileUIImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
