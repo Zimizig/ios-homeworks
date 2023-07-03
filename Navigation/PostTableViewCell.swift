@@ -29,10 +29,14 @@ class PostTableViewCell: UITableViewCell {
         return image
     }()
     
-    var descriptionTextView: UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    var descriptionText: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        //label.backgroundColor = .cyan
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = UIColor.black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     var likesLabel: UILabel = {
@@ -48,7 +52,17 @@ class PostTableViewCell: UITableViewCell {
     private let vStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 0
+        
+        //stackView.distribution = .fillEqually
+        //stackView.alignment = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let hStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +84,7 @@ class PostTableViewCell: UITableViewCell {
     func configure(post: PostModel) {
         authorLabel.text = post.author
         postImageView.image = UIImage(named: post.image)
-        descriptionTextView.text = post.description
+        descriptionText.text = post.description
         likesLabel.text = String(post.likes)
         viewsLabel.text = String(post.views)
     }
@@ -79,7 +93,7 @@ class PostTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
         vStack.addArrangedSubview(authorLabel)
         vStack.addArrangedSubview(postImageView)
-        vStack.addArrangedSubview(descriptionTextView)
+        vStack.addArrangedSubview(descriptionText)
         contentView.addSubview(vStack)
     }
     
@@ -90,11 +104,15 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: 16).isActive = true
+        postImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
+        postImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
         
-        descriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16).isActive = true
+        descriptionText.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        descriptionText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        descriptionText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         
         
         vStack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
