@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
         
         return tableView
     }()
@@ -57,7 +58,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") ?? UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PostTableViewCell
+        cell.setup(post: posts[indexPath.row])
         return cell
     }
     
@@ -70,8 +72,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 /*
-
-
 Создайте файл PostTableViewCell.swift и добавьте в него класс UITableViewCell с именем PostTableViewCell.
 Реализуйте верстку в только что созданном классе согласно макету Lesson_6_Layout_3. Используйте Auto Layout.
 Используйте созданную ячейку для отображения контента публикации.
