@@ -10,47 +10,47 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private lazy var profileHeader: ProfileHeaderView = {
-        let view = ProfileHeaderView()
-        view.backgroundColor = .lightGray
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private lazy var setTitleButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .systemRed
-        button.setTitle("change title", for: .normal)
+    var posts = [
         
-        return button
-    }()
+    PostModel(author: "Alex", description: "About chinese Art", image: "logo", likes: 50, views: 100),
+    PostModel(author: "Olga", description: "Modern Policy", image: "logo", likes: 30, views: 120),
+    PostModel(author: "Sonya", description: "History", image: "logo", likes: 70, views: 90),
+    PostModel(author: "Kirill", description: "Geography", image: "logo", likes: 30, views: 40)
+
+    ]
     
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .cyan
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        title = "Profile"
         
-        setupView()
     }
     
-    func setupView() {
-        view.addSubview(profileHeader)
-        view.addSubview(setTitleButton)
-        
-        
-        NSLayoutConstraint.activate([
-            profileHeader.heightAnchor.constraint(equalToConstant: 220),
-            profileHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            setTitleButton.heightAnchor.constraint(equalToConstant: 100),
-            setTitleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            setTitleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            setTitleButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+    private func setUIElements() {
+        self.view.addSubview(tableView)
     }
+    
+    private func setConstraints() {
+         
+    }
+    
 }
+
+/*
+Создайте массив из минимум четырех публикаций. Все данные, в том числе изображения для публикаций, используйте на свой вкус.
+Вам нужно удалить весь ранее написанный код в классе ProfileViewController.
+Внимание! Если вы выполнили прошлое задание не в отдельном классе-наследнике UIView, то нужно перенести всю верстку в отдельный файл ProfileTableHederView.swift, в котором должен быть класс-наследник UIView с именем ProfileHeaderView.
+
+Добавьте экземпляр класса UITableView и закрепите его к краям экрана.
+Класс ProfileViewController должен реализовать протоколы UITableViewDelegate и UITableViewDataSource. Примените extension инструмент.
+Ранее созданный массив с публикациями используйте в качестве источника данных для таблицы.
+Используйте ProfileTableHederView в качестве HeaderForSection для нулевой секции.
+Создайте файл PostTableViewCell.swift и добавьте в него класс UITableViewCell с именем PostTableViewCell.
+Реализуйте верстку в только что созданном классе согласно макету Lesson_6_Layout_3. Используйте Auto Layout.
+Используйте созданную ячейку для отображения контента публикации.
+*/
