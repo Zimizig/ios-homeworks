@@ -27,7 +27,6 @@ class LogInViewController: UIViewController {
         textField.textColor = .black
         textField.placeholder = "Your e-mail or phone number"
         textField.font = UIFont.systemFont(ofSize: 16)
-        //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         textField.tintColor = UIColor.placeholderText
         textField.autocapitalizationType = .none
         textField.delegate = self

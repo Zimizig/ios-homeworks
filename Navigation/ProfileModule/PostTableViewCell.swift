@@ -11,7 +11,7 @@ class PostTableViewCell: UITableViewCell {
 
     var authorLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor.black
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,8 +21,7 @@ class PostTableViewCell: UITableViewCell {
     
     var postImageView: UIImageView = {
         let width = UIScreen.main.bounds.width
-        
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
+        let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.backgroundColor = .black
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +33,9 @@ class PostTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = UIColor.systemGray
+        //label.backgroundColor = .cyan
+        label.textAlignment = .left
+        // Обрать отсупы вначале и конце лайбла
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,6 +43,7 @@ class PostTableViewCell: UITableViewCell {
     var likesLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -57,8 +60,7 @@ class PostTableViewCell: UITableViewCell {
     private let vStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -88,7 +90,7 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.text = post.author
         postImageView.image = UIImage(named: post.image)
         descriptionText.text = post.description
-        likesLabel.text = String("  Likes: \(post.likes)")
+        likesLabel.text = String("Likes: \(post.likes)")
         viewsLabel.text = String("Views: \(post.views)")
     }
     
@@ -109,14 +111,15 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.topAnchor.constraint(equalTo: vStack.topAnchor).isActive = true
         authorLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
         authorLabel.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
-        authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        authorLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        authorLabel.bottomAnchor.constraint(equalTo: postImageView.topAnchor, constant: 0).isActive = true
         
-        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8).isActive = true
-        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: -8).isActive = true
-        postImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
-        postImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
+        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 0).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: 0).isActive = true
+        postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         
-        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 8).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 0).isActive = true
         descriptionText.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
         descriptionText.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 16).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -16).isActive = true
@@ -126,7 +129,7 @@ class PostTableViewCell: UITableViewCell {
         vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
-        hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 4).isActive = true
+        hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
         hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
         hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         

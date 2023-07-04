@@ -29,10 +29,10 @@ class FeedViewController: UIViewController {
     
     @objc func buttonTouched () {
         
-        let post = Post(title: "Пост")
-        let vc = PostViewController()
-        vc.setPost(post: post)
-        navigationController?.pushViewController(vc, animated: true)
+        //let post = Post(title: "Пост")
+        //let vc = PostViewController()
+        //vc.setPost(post: post)
+        //navigationController?.pushViewController(vc, animated: true)
     }
     
 

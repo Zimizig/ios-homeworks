@@ -9,11 +9,11 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    private var post: Post?
+    //private var post: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = post?.title
+      //  title = post?.title
         view.backgroundColor = .systemCyan
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "info", style: .done, target: self, action: #selector(goToInfoVC))
     }
@@ -22,8 +22,9 @@ class PostViewController: UIViewController {
         let vc = InfoViewController()
         present(vc, animated: true)
     }
-    
+    /*
     func setPost(post: Post) {
         self.post = post
     }
+    */
 }

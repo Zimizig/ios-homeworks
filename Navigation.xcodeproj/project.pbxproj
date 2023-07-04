@@ -16,7 +16,6 @@
 		2C239C7629FF1F3000A58FB3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C239C7529FF1F3000A58FB3 /* ProfileViewController.swift */; };
 		2C6CD993298B135E005266E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CD992298B135E005266E3 /* AppDelegate.swift */; };
 		2C6CD995298B135E005266E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CD994298B135E005266E3 /* SceneDelegate.swift */; };
-		2C6CD997298B135E005266E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CD996298B135E005266E3 /* ViewController.swift */; };
 		2C6CD99C298B135F005266E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CD99B298B135F005266E3 /* Assets.xcassets */; };
 		2C6CD99F298B135F005266E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CD99D298B135F005266E3 /* LaunchScreen.storyboard */; };
 		2C9D73282991DB25006F52FC /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9D73272991DB25006F52FC /* FeedViewController.swift */; };
@@ -33,7 +32,6 @@
 		2C6CD98F298B135E005266E3 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6CD992298B135E005266E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C6CD994298B135E005266E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2C6CD996298B135E005266E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2C6CD99B298B135F005266E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C6CD99E298B135F005266E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C6CD9A0298B135F005266E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,13 +49,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C239C6F29FF150B00A58FB3 /* Profile */ = {
+		04A1C8142A545A52007E5826 /* PostModul */ = {
+			isa = PBXGroup;
+			children = (
+				2C082E4029928FB000EBB9DE /* PostViewController.swift */,
+			);
+			path = PostModul;
+			sourceTree = "<group>";
+		};
+		2C239C6F29FF150B00A58FB3 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
 				2C239C7529FF1F3000A58FB3 /* ProfileViewController.swift */,
+				2C082E422992945A00EBB9DE /* Post.swift */,
+				047BE0DA2A52FA1300517224 /* PostTableViewCell.swift */,
 				2C239C7029FF155A00A58FB3 /* ProfileHeaderView.swift */,
 			);
-			path = Profile;
+			path = ProfileModule;
 			sourceTree = "<group>";
 		};
 		2C6CD986298B135E005266E3 = {
@@ -79,16 +87,13 @@
 		2C6CD991298B135E005266E3 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				2C239C6F29FF150B00A58FB3 /* Profile */,
 				2C6CD992298B135E005266E3 /* AppDelegate.swift */,
 				2C6CD994298B135E005266E3 /* SceneDelegate.swift */,
-				2C9D73272991DB25006F52FC /* FeedViewController.swift */,
-				047BE0D82A51D14A00517224 /* LogInViewController.swift */,
-				2C082E4029928FB000EBB9DE /* PostViewController.swift */,
-				047BE0DA2A52FA1300517224 /* PostTableViewCell.swift */,
+				2C239C6F29FF150B00A58FB3 /* ProfileModule */,
+				04A1C8142A545A52007E5826 /* PostModul */,
 				2C082E4429929BD600EBB9DE /* InfoViewController.swift */,
-				2C082E422992945A00EBB9DE /* Post.swift */,
-				2C6CD996298B135E005266E3 /* ViewController.swift */,
+				047BE0D82A51D14A00517224 /* LogInViewController.swift */,
+				2C9D73272991DB25006F52FC /* FeedViewController.swift */,
 				2C6CD99B298B135F005266E3 /* Assets.xcassets */,
 				2C6CD99D298B135F005266E3 /* LaunchScreen.storyboard */,
 				2C6CD9A0298B135F005266E3 /* Info.plist */,
@@ -168,7 +173,6 @@
 			files = (
 				047BE0DB2A52FA1300517224 /* PostTableViewCell.swift in Sources */,
 				2C082E4129928FB000EBB9DE /* PostViewController.swift in Sources */,
-				2C6CD997298B135E005266E3 /* ViewController.swift in Sources */,
 				2C239C7629FF1F3000A58FB3 /* ProfileViewController.swift in Sources */,
 				2C6CD993298B135E005266E3 /* AppDelegate.swift in Sources */,
 				2C6CD995298B135E005266E3 /* SceneDelegate.swift in Sources */,
