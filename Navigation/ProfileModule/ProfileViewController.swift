@@ -10,6 +10,7 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
+    var photos: [String] = ["Hekko","Dog","Cat"]
         
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
@@ -20,6 +21,7 @@ class ProfileViewController: UIViewController {
         
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "photoCell")
         
         return tableView
     }()
@@ -44,15 +46,37 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
     }
     
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == 0 {
+           return posts.count
+        } else {
+           return photos.count
+        }
+        
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PostTableViewCell
-        cell.configure(post: posts[indexPath.row])
-        return cell
+        let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell")
+        
+        if indexPath.section == 0 {
+            cell.configure(post: posts[indexPath.row])
+            return cell
+        } else {
+            
+            photoCell?.textLabel?.text = photos[indexPath.row]
+            return photoCell!
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
