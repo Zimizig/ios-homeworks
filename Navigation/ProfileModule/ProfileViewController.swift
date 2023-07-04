@@ -21,6 +21,7 @@ class ProfileViewController: UIViewController {
         
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(photoTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "photoHeader")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "photoCell")
         
         return tableView
@@ -80,8 +81,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = ProfileHeaderView(reuseIdentifier: "header")
-        return header
+        if section == 0 {
+            let header = ProfileHeaderView(reuseIdentifier: "header")
+            return header
+        } else {
+            let header = photoTableHeaderView(reuseIdentifier: "photoHeader")
+            return header
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
