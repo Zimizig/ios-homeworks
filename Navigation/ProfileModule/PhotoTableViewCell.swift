@@ -13,7 +13,7 @@ class PhotoTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame:.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .cyan
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -33,7 +33,7 @@ class PhotoTableViewCell: UITableViewCell {
     private func setupCollectionView() {
         
         self.contentView.addSubview(collectionView)
-        
+     
         collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
@@ -48,7 +48,8 @@ class PhotoTableViewCell: UITableViewCell {
  }
  
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
- let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! PhotoCollectionViewCell
+ let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath)
+     cell.contentView.backgroundColor = .blue
     
  return cell
         }
@@ -56,8 +57,22 @@ class PhotoTableViewCell: UITableViewCell {
 
 extension PhotoTableViewCell: UICollectionViewDelegateFlowLayout {
     
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: 60, height: 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        5
     }
     
     
