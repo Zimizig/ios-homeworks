@@ -10,14 +10,15 @@ import UIKit
 class PhotoTableViewCell: UITableViewCell {
 
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 200), collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.backgroundColor = .green
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame:.zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .cyan
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
   
-      
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
@@ -29,54 +30,39 @@ class PhotoTableViewCell: UITableViewCell {
     }
     
 
-    
-    
     private func setupCollectionView() {
         
         self.contentView.addSubview(collectionView)
         
-        /*
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        */
-        
-    }
+        collectionView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
     
-
-     
-
+    }
 }
 
  extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
- 2
+     1
  }
  
  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! PhotoCollectionViewCell
- //cell.view.backgroundColor = .green
- 
+    
  return cell
+        }
  }
- }
- 
- 
- 
-/*
-private func setupView() {
-    contentView.addSubview(view)
+
+extension PhotoTableViewCell: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 60, height: 60)
+    }
+    
+    
+    
+    
+    
 }
-*/
-
-/*
-private lazy var view: UIView = {
-    let view = UIView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-    view.backgroundColor = .green
-    //view.translatesAutoresizingMaskIntoConstraints = false
-    return view
-}()
-
-*/
-
+ 
