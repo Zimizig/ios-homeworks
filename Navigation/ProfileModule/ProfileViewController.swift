@@ -10,18 +10,16 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
-    var photos: [String] = ["Hekko","Dog","Cat"]
+    
         
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(photoTableHeaderView.self, forHeaderFooterViewReuseIdentifier: "photoHeader")
+        tableView.register(PhotoTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "photoHeader")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "photoCell")
         
         return tableView
@@ -58,10 +56,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
            return posts.count
         } else {
-           return photos.count
+           return 1
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +69,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             
-            photoCell?.textLabel?.text = photos[indexPath.row]
+            photoCell?.backgroundColor = .cyan
             return photoCell!
         }
         
@@ -85,14 +81,23 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let header = ProfileHeaderView(reuseIdentifier: "header")
             return header
         } else {
-            let header = photoTableHeaderView(reuseIdentifier: "photoHeader")
+            let header = PhotoTableViewHeaderView(reuseIdentifier: "photoHeader")
             return header
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UIScreen.main.bounds.height - 120
+        
+        if indexPath.section == 0 {
+            
+           let rowHeight = UIScreen.main.bounds.height - 120
+            return rowHeight
+        } else {
+            return 200
+        }
+        
     }
-    
+
+        
 }
 

@@ -133,7 +133,6 @@ class PostTableViewCell: UITableViewCell {
         hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
         hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         
-    
     }
     
     
