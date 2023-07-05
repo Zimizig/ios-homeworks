@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(PhotoTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "photoHeader")
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "photoCell")
+        tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "photoCell")
         
         return tableView
     }()
@@ -62,15 +62,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PostTableViewCell
-        let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell")
+        let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell") as! PhotoTableViewCell
         
         if indexPath.section == 0 {
             cell.configure(post: posts[indexPath.row])
             return cell
         } else {
             
-            photoCell?.backgroundColor = .cyan
-            return photoCell!
+            return photoCell
         }
         
         

@@ -33,9 +33,7 @@ class PostTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = UIColor.systemGray
-        //label.backgroundColor = .cyan
         label.textAlignment = .left
-        // Обрать отсупы вначале и конце лайбла
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -134,8 +132,4 @@ class PostTableViewCell: UITableViewCell {
         hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         
     }
-    
-    
-    
-
 }
