@@ -35,10 +35,10 @@ class PhotoTableViewCell: UITableViewCell {
     
     private func setupCollectionView() {
         self.contentView.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 12).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,constant: -12).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 0).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,constant: 0).isActive = true
     }
     
 }
@@ -68,7 +68,7 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         let collectionViewSideInset = (12*2)
         
         let itemWindth = screenWindth - (CGFloat(interItemsSpasing)+CGFloat(collectionViewSideInset))
-        let itemSize = CGSize(width: itemWindth, height: itemWindth)
+        let itemSize = CGSize(width: itemWindth, height: 200)
 
         return itemSize
         
@@ -76,6 +76,10 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     }
     
     
