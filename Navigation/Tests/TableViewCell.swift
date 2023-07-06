@@ -7,21 +7,29 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout {
+class TableViewCell: UITableViewCell {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    override func awakeFromNib() {
-        super.awakeFromNib()
+   
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCollectionView()
-        
     }
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
   
     
     private func setupCollectionView() {
@@ -32,9 +40,10 @@ class TableViewCell: UITableViewCell, UICollectionViewDelegateFlowLayout {
         collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
     }
     
+   
 }
 
-extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         3
@@ -42,8 +51,16 @@ extension TableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
-        cell.label.text = "Hello"
+        
+        cell.imageView.backgroundColor = .black
+        //cell.label.text = "Hello"
+        cell.contentView.backgroundColor = .gray
         return cell 
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 100, height: 100)
     }
    
 }
