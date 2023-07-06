@@ -35,10 +35,10 @@ class PhotoTableViewCell: UITableViewCell {
     
     private func setupCollectionView() {
         self.contentView.addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor,constant: 12).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12).isActive = true
+        collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12).isActive = true
+        collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor,constant: -12).isActive = true
     }
     
 }
@@ -46,21 +46,36 @@ class PhotoTableViewCell: UITableViewCell {
 extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
-        cell.imageView.backgroundColor = .black
+        //cell.imageView.backgroundColor = .black
+        //cell.layer.cornerRadius = 6
         //cell.label.text = "Hello"
-        cell.contentView.backgroundColor = .gray
+        
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 100, height: 100)
+        
+        let screenWindth = UIScreen.main.bounds.width
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let interItemsSpasing = 8 * (4-1)
+        let collectionViewSideInset = (12*2)
+        
+        let itemWindth = screenWindth - (CGFloat(interItemsSpasing)+CGFloat(collectionViewSideInset))
+        let itemSize = CGSize(width: itemWindth, height: itemWindth)
+
+        return itemSize
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        8
     }
     
     

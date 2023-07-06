@@ -10,14 +10,18 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     lazy var imageView: UIImageView = {
-        let label = UIImageView()
-        label.backgroundColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        let image = UIImageView()
+        image.backgroundColor = .black
+        image.layer.cornerRadius = 6
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.layer.cornerRadius = 6
         addSubview(imageView)
         
         imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
