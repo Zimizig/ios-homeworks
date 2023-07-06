@@ -13,6 +13,8 @@ class CollectionViewCell: UICollectionViewCell {
         let image = UIImageView()
         image.backgroundColor = .black
         image.layer.cornerRadius = 6
+        image.clipsToBounds
+        image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image

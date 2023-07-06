@@ -20,6 +20,8 @@ class PhotoTableViewCell: UITableViewCell {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    private let photos = PhotoModel.getPhotos()
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -46,15 +48,14 @@ class PhotoTableViewCell: UITableViewCell {
 extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         
-        //cell.imageView.backgroundColor = .black
-        //cell.layer.cornerRadius = 6
-        //cell.label.text = "Hello"
+        cell.imageView.image = UIImage(named: photos[indexPath.item].photoName)
+        
         
         return cell
     }
@@ -64,12 +65,14 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         let screenWindth = UIScreen.main.bounds.width
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        let interItemsSpasing = 8 * (4-1)
-        let collectionViewSideInset = (12*2)
         
-        let itemWindth = screenWindth - (CGFloat(interItemsSpasing)+CGFloat(collectionViewSideInset))
-        let itemSize = CGSize(width: itemWindth, height: 200)
-
+        let sideOfsites = layout.sectionInset.left*2
+        let interLineSpaces = layout.minimumLineSpacing*3
+        let allINsets = sideOfsites+interLineSpaces
+        
+        let itemWindth = (screenWindth - allINsets)/4
+        let itemSize = CGSize(width: itemWindth, height: itemWindth)
+        
         return itemSize
         
     }

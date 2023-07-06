@@ -29,28 +29,29 @@ struct PostModel {
     }
 }
 
-/*
-Алгоритм выполнения:
-Создайте PhotosTableViewCell.swift c одноименным классом внутри.
-
-Сделайте вёрстку согласно макету. В ячейке должно отображаться первые 4 фото.
-
-Добавьте только что созданную ячейку в таблицу согласно позиции в макете. Рекомендую положить эту ячейку в отдельную секцию, так будет проще.
-
-По тапу на ячейку должен осуществляться переход на экран «фото галереи». Показать экран нужно при помощи метода UINavigationController.push(_ :).
-
-Создайте PhotosViewController.swift c одноимённым классом внутри.
-
-Добавьте в него экземпляр класса UICollectionView и растяните по краям согласно макету.
-
-Добавьте для всей коллекции отступы, используя UIEdgeInsets. Размеры оступов берите из макета.
-
-Ваша коллекция должна отображать ячейки таким образом, чтобы в одном ряду равнопропорционально разместилось три ячейки с фотографиями.
-
-Создайте PhotosCollectionViewCell.swift с одноимённым классом внутри.
-
-Сделайте вёрстку ячейки согласно макету и добавьте её в ранее созданную коллекцию.
-
-При переходе на экран с коллекцией должен появляться NavigationBar. При уходе с экрана он должен исчезать. Используйте правильные методы жизненного цикла UIViewController и свойство isHidden.
-
- */
+struct PhotoModel {
+    
+    let photoName: String
+    
+    static func getPhotos()->[PhotoModel] {
+        let photos = [
+        PhotoModel(photoName: "1"),
+        PhotoModel(photoName: "2"),
+        PhotoModel(photoName: "3"),
+        PhotoModel(photoName: "4"),
+        PhotoModel(photoName: "5"),
+        PhotoModel(photoName: "6"),
+        PhotoModel(photoName: "7"),
+        PhotoModel(photoName: "8"),
+        PhotoModel(photoName: "9"),
+        PhotoModel(photoName: "10"),
+        PhotoModel(photoName: "11"),
+        PhotoModel(photoName: "12"),
+        PhotoModel(photoName: "13"),
+        PhotoModel(photoName: "14"),
+        PhotoModel(photoName: "15"),
+        ]
+        
+        return photos
+    }
+}
