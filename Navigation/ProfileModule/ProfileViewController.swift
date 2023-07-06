@@ -54,9 +54,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-           return posts.count
+            return 1
+            
         } else {
-           return 1
+            return posts.count
         }
     }
     
@@ -65,34 +66,37 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell") as! PhotoTableViewCell
         
         if indexPath.section == 0 {
+            return photoCell
+        } else {
             cell.configure(post: posts[indexPath.row])
             return cell
-        } else {
             
-            return photoCell
         }
         
         
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         if section == 0 {
             let header = ProfileHeaderView(reuseIdentifier: "header")
             return header
         } else {
-            let header = PhotoTableViewHeaderView(reuseIdentifier: "photoHeader")
-            return header
+            return UIView()
         }
     }
+    
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            
-           let rowHeight = UIScreen.main.bounds.height - 120
-            return rowHeight
-        } else {
             return 200
+          
+        } else {
+            let rowHeight = UIScreen.main.bounds.height - 120
+             return rowHeight
+            
         }
         
     }
