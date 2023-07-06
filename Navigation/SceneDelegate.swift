@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let winScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: winScene)
-        window.rootViewController = TestViewController()
+        window.rootViewController = ProfileViewController()
         window.makeKeyAndVisible()
         self.window = window
     }
