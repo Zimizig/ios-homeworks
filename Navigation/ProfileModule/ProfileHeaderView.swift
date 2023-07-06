@@ -76,6 +76,16 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x:0, y:0 , width: UIScreen.main.bounds.width, height: 24))
+        label.text = "Photos"
+        
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupView()
@@ -96,6 +106,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(profileUIСrutchLabel)
         addSubview(profileUIImageView)
         addSubview(profileUIButton)
+        addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
             
@@ -123,7 +134,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
             statusTextField.topAnchor.constraint(equalTo: profileStatuslabel.bottomAnchor, constant: 10),
-            statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10)
+            statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10),
+            
+            titleLabel.topAnchor.constraint(equalTo: profileUIButton.bottomAnchor, constant: 24),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            titleLabel.heightAnchor.constraint(equalToConstant: 24),
+            titleLabel.trailingAnchor.constraint(equalTo:trailingAnchor , constant: -12)
         ])
     }
 }
