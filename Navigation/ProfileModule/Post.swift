@@ -54,4 +54,14 @@ struct PhotoModel {
         
         return photos
     }
+    
+    static func getFirstPhotos() -> [PhotoModel] {
+        let photos = [
+            PhotoModel(photoName: "1"),
+            PhotoModel(photoName: "2"),
+            PhotoModel(photoName: "3"),
+            PhotoModel(photoName: "4"),
+        ]
+        return photos
+    }
 }

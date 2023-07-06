@@ -21,7 +21,8 @@ class PhotoTableViewCell: UITableViewCell {
         return collectionView
     }()
     
-    private let photos = PhotoModel.getPhotos()
+    private let photos = PhotoModel.getFirstPhotos()
+      
    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
