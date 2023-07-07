@@ -11,7 +11,6 @@ class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
     
-        
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -71,6 +70,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(PhotoViewController(), animated: true)
     }
     
   

@@ -28,11 +28,29 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        //embedInNavigation()
         setupCollectionView()
+    }
+    
+    private func embedInNavigation() {
+        
+        let navigationController = UINavigationController(rootViewController: self)
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.shadowImage = UIImage()
+        navBarAppearance.shadowColor = .separator
+        navBarAppearance.titleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 24)
+        ]
+        navigationController.navigationBar.standardAppearance = navBarAppearance
+        navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
     }
     
     
     private func setupCollectionView() {
+        
         self.view.addSubview(collectionView)
     
         collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0).isActive = true

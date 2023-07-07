@@ -34,7 +34,6 @@ class PhotoTableViewCell: UITableViewCell {
     private lazy var arrowImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        //imageView.contentMode = .right
         imageView.image = UIImage(systemName: "arrow.right")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -90,12 +89,7 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        //UINavigationController.pushViewController(PhotoViewController)
-    }
-    
-    
+  
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let screenWindth = UIScreen.main.bounds.width
