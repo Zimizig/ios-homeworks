@@ -19,7 +19,6 @@ class ProfileViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: "header")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(PhotoTableViewHeaderView.self, forHeaderFooterViewReuseIdentifier: "photoHeader")
         tableView.register(PhotoTableViewCell.self, forCellReuseIdentifier: "photoCell")
         
         return tableView
@@ -72,8 +71,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
