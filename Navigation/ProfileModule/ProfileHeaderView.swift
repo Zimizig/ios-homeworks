@@ -106,7 +106,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(profileUIСrutchLabel)
         addSubview(profileUIImageView)
         addSubview(profileUIButton)
-        addSubview(titleLabel)
+        //addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
             
@@ -136,10 +136,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusTextField.topAnchor.constraint(equalTo: profileStatuslabel.bottomAnchor, constant: 10),
             statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10),
             
+            /*
             titleLabel.topAnchor.constraint(equalTo: profileUIButton.bottomAnchor, constant: 24),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             titleLabel.heightAnchor.constraint(equalToConstant: 24),
             titleLabel.trailingAnchor.constraint(equalTo:trailingAnchor , constant: -12)
+            */
         ])
     }
 }

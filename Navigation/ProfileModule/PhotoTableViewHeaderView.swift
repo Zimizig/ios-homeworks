@@ -13,7 +13,6 @@ class PhotoTableViewHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 12, y: 24, width: UIScreen.main.bounds.width, height: 24))
         label.text = "Photos"
-        
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         //label.translatesAutoresizingMaskIntoConstraints = false
         return label
