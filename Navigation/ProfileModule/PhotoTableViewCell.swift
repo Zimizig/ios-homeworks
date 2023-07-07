@@ -60,9 +60,9 @@ class PhotoTableViewCell: UITableViewCell {
             
         
         arrowImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20).isActive = true
-        arrowImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
+        arrowImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12).isActive = true
         arrowImage.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        arrowImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4).isActive = true
+        arrowImage.widthAnchor.constraint(equalToConstant: 35).isActive = true
         
         collectionTitle.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 24).isActive = true
         collectionTitle.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12).isActive = true
