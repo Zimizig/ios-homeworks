@@ -7,9 +7,15 @@
 
 import UIKit
 
+
+protocol NavigateToPhotoVCDelegate {
+    func navigate()
+}
+
 class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
+    var delegate: NavigateToPhotoVCDelegate?
     
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
@@ -25,6 +31,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delegate = self
         setUIElements()
         setConstraints()
     }
@@ -72,10 +79,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    
+    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(PhotoViewController(), animated: true)
     }
-    
+    */
   
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -100,7 +109,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+}
 
-        
+extension ProfileViewController: NavigateToPhotoVCDelegate {
+    func navigate() {
+        navigationController?.pushViewController(PhotoViewController(), animated: true)
+    }
+    
+    
 }
 
