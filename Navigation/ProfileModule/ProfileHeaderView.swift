@@ -97,16 +97,18 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     @objc func animate() {
       
+        
+        let centerX =  UIScreen.main.bounds.midX
+        let cenerY = UIScreen.main.bounds.midY
+        let windth = UIScreen.main.bounds.width
+        
         UIView.animate(withDuration: 0.5, delay: 0) {
             self.profileUIImageView.layer.cornerRadius = 0
-            let centerX =  UIScreen.main.bounds.midX
-            let cenerY = UIScreen.main.bounds.midY
-            let windth = UIScreen.main.bounds.width
-            self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
         } completion: { bool in
             UIView.animate(withDuration: 0.5) {
-                self.imageViewSide = UIScreen.main.bounds.width
-                self.profileUIImageView.updateConstraints()
+                self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = true
+                self.profileUIImageView.frame.size = CGSize(width: windth, height: windth)
+                self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
             }
         }
     }
