@@ -28,7 +28,7 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        //embedInNavigation()
+        embedInNavigation()
         setupCollectionView()
     }
     

@@ -15,7 +15,7 @@ protocol NavigateToPhotoVCDelegate {
 class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
-    var delegate: NavigateToPhotoVCDelegate?
+    
     
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
@@ -31,10 +31,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        
         setUIElements()
         setConstraints()
     }
+    
     
     private func setUIElements() {
         self.view.addSubview(tableView)
@@ -71,6 +72,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell") as! PhotoTableViewCell
         
         if indexPath.section == 0 {
+            photoCell.delegate = self
             return photoCell
         } else {
             cell.configure(post: posts[indexPath.row])
