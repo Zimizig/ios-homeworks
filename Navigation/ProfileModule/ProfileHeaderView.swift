@@ -79,6 +79,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
+    var imageViewSide = 120.0
+    
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -103,38 +105,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
         } completion: { bool in
             UIView.animate(withDuration: 0.5) {
-                self.profileUIImageView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+                self.imageViewSide = UIScreen.main.bounds.width
+                self.profileUIImageView.updateConstraints()
             }
-            
         }
     }
-    
-    
-    /*
-     UIView.animate(withDuration: 0.2, delay: 0, options: .beginFromCurrentState) {
-         cell.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
-         
-     } completion: { bool in
-         UIView.animate(withDuration: 0.5, delay: 0, options: .beginFromCurrentState) {
-             let character = self.characters[indexPath.row]
-             if character.isFlipped == false {
-                 cell.flipCard()
-                 character.isFlipped = true
-             } else {
-                 cell.flipBack()
-                 character.isFlipped = false
-             }
-         } completion: { bool in
-             UIView.animate(withDuration: 0.2, delay: 0, options: .beginFromCurrentState) {
-             cell.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-                     }
-                   }
-                 }
-    
-    
-     */
-    
-    
     
     private func setupView() {
         addSubview(statusTextField)
@@ -148,8 +123,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             
             self.heightAnchor.constraint(equalToConstant: 220),
-            profileUIImageView.widthAnchor.constraint(equalToConstant: 120),
-            profileUIImageView.heightAnchor.constraint(equalToConstant: 120),
+            profileUIImageView.widthAnchor.constraint(equalToConstant: imageViewSide),
+            profileUIImageView.heightAnchor.constraint(equalToConstant: imageViewSide),
             profileUIImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             profileUIImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             
