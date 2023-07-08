@@ -58,6 +58,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         image.layer.borderColor = UIColor.white.cgColor
         image.clipsToBounds = true
         image.image = UIImage(named: "15")
+        let gesture = UIGestureRecognizer(target: self, action: #selector(animate))
+        image.addGestureRecognizer(gesture)
         return image
     }()
     
@@ -88,6 +90,12 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     @objc private func printStatus() {
         print(profileStatuslabel.text ?? "")
+    }
+    
+    @objc func animate() {
+        UIView.animate(withDuration: 0.5) {
+            self.profileUIImageView.alpha = 0
+        }
     }
     
     private func setupView() {
