@@ -100,17 +100,38 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             let centerX =  UIScreen.main.bounds.midX
             let cenerY = UIScreen.main.bounds.midY
             let windth = UIScreen.main.bounds.width
+            self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
+        } completion: { bool in
+            UIView.animate(withDuration: 0.5) {
+                self.profileUIImageView.transform = CGAffineTransform(scaleX: 2.5, y: 2.5)
+            }
+            
         }
-        
-        
-        
     }
     
     
     /*
+     UIView.animate(withDuration: 0.2, delay: 0, options: .beginFromCurrentState) {
+         cell.transform = CGAffineTransform.init(scaleX: 0.9, y: 0.9)
+         
+     } completion: { bool in
+         UIView.animate(withDuration: 0.5, delay: 0, options: .beginFromCurrentState) {
+             let character = self.characters[indexPath.row]
+             if character.isFlipped == false {
+                 cell.flipCard()
+                 character.isFlipped = true
+             } else {
+                 cell.flipBack()
+                 character.isFlipped = false
+             }
+         } completion: { bool in
+             UIView.animate(withDuration: 0.2, delay: 0, options: .beginFromCurrentState) {
+             cell.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                     }
+                   }
+                 }
     
     
-    self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
      */
     
     
