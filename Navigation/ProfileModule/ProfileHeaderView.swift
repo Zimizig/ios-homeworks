@@ -52,7 +52,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     private lazy var profileUIImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 60
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
@@ -81,13 +81,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .systemBlue
-        button.addTarget(self, action: #selector(printStatus), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(rewardAnimation), for: .touchUpInside)
         return button
     }()
     
-    var imageViewSide = 120.0
+    
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -112,14 +112,27 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         UIView.animate(withDuration: 0.5, delay: 0) {
             self.profileUIImageView.layer.cornerRadius = 0
             self.profileUIButton.isHidden = true
+            self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = true
+            self.profileUIImageView.frame.size = CGSize(width: windth, height: height)
+            self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
+            self.profileUIImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.9)
         } completion: { bool in
             UIView.animate(withDuration: 0.5) {
-                self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = true
-                self.profileUIImageView.frame.size = CGSize(width: windth, height: height)
-                self.profileUIImageView.contentMode = .scaleAspectFit
-                self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
-                self.profileUIImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.9)
+                self.closeButton.isHidden = false
             }
+        }
+    }
+    
+    @objc func rewardAnimation(){
+        
+        UIView.animate(withDuration: 0.5, delay: 0) {
+            self.profileUIImageView.frame.size = CGSize(width: 120, height: 120)
+            self.profileUIImageView.layer.cornerRadius = 60
+            self.closeButton.isHidden = true
+            
+            self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = false
+        } completion: { bool in
+            self.profileUIButton.isHidden = false
         }
     }
     
@@ -129,14 +142,15 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(profileStatuslabel)
         addSubview(profileUIСrutchLabel)
         addSubview(profileUIImageView)
+        addSubview(closeButton)
         addSubview(profileUIButton)
         
         
         NSLayoutConstraint.activate([
             
             self.heightAnchor.constraint(equalToConstant: 220),
-            profileUIImageView.widthAnchor.constraint(equalToConstant: imageViewSide),
-            profileUIImageView.heightAnchor.constraint(equalToConstant: imageViewSide),
+            profileUIImageView.widthAnchor.constraint(equalToConstant: 120),
+            profileUIImageView.heightAnchor.constraint(equalToConstant: 120),
             profileUIImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             profileUIImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             
@@ -160,7 +174,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusTextField.topAnchor.constraint(equalTo: profileStatuslabel.bottomAnchor, constant: 10),
             statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10),
             
-            
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            closeButton.widthAnchor.constraint(equalToConstant: 50),
+            closeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
