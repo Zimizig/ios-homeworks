@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UIViewController, UINavigationBarDelegate {
 
     
     private lazy var collectionView: UICollectionView = {
@@ -16,11 +16,25 @@ class PhotoViewController: UIViewController {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        //collectionView.backgroundColor = .cyan
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
+    }()
+    
+
+    private lazy var navigationBar: UINavigationBar = {
+        let height: CGFloat = 75
+        let navbar = UINavigationBar(frame: CGRect(x: 0, y: 50, width: UIScreen.main.bounds.width, height: height))
+        navbar.backgroundColor = UIColor.white
+        navbar.delegate = self
+
+        let navItem = UINavigationItem()
+        navItem.title = "Gallery"
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
+        navbar.setItems([navItem], animated: true)
+        return navbar
     }()
     
     private var photos = PhotoModel.getPhotos()
@@ -28,32 +42,20 @@ class PhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        embedInNavigation()
+        self.title = "Gallery"
         setupCollectionView()
+        
     }
     
-    private func embedInNavigation() {
-        
-        let navigationController = UINavigationController(rootViewController: self)
-        
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.shadowImage = UIImage()
-        navBarAppearance.shadowColor = .separator
-        navBarAppearance.titleTextAttributes = [
-            .font: UIFont.systemFont(ofSize: 24)
-        ]
-        navigationController.navigationBar.standardAppearance = navBarAppearance
-        navigationController.navigationBar.scrollEdgeAppearance = navBarAppearance
-        
-    }
+ 
     
     
     private func setupCollectionView() {
         
+        self.view.addSubview(navigationBar)
         self.view.addSubview(collectionView)
     
-        collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.navigationBar.bottomAnchor,constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
@@ -79,14 +81,10 @@ extension PhotoViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let screenWindth = UIScreen.main.bounds.width
-        
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        
         let interLineSpaces = layout.minimumLineSpacing*4
         let itemWindth = (screenWindth - interLineSpaces)/3
-        
         let itemSize = CGSize(width: itemWindth, height: itemWindth)
-        
         return itemSize
         
         

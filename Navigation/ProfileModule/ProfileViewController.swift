@@ -115,6 +115,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController: NavigateToPhotoVCDelegate {
     func navigate() {
+        //let photoNC = UINavigationController(rootViewController: PhotoViewController())
+        
         navigationController?.pushViewController(PhotoViewController(), animated: true)
     }
     
