@@ -32,7 +32,7 @@ class PhotoViewController: UIViewController, UINavigationBarDelegate {
 
         let navItem = UINavigationItem()
         navItem.title = "Gallery"
-        navItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .plain, target: self, action: nil)
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(popVC))
         navbar.setItems([navItem], animated: true)
         return navbar
     }()
@@ -47,6 +47,9 @@ class PhotoViewController: UIViewController, UINavigationBarDelegate {
         
     }
     
+    @objc func popVC() {
+        navigationController?.popViewController(animated: true)
+    }
  
     
     
