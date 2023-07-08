@@ -79,8 +79,15 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    var imageViewSide = 120.0
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemBlue
+        button.addTarget(self, action: #selector(printStatus), for: .touchUpInside)
+        return button
+    }()
     
+    var imageViewSide = 120.0
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -97,7 +104,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     @objc func animate() {
       
-        
         let centerX =  UIScreen.main.bounds.midX
         let cenerY = UIScreen.main.bounds.midY
         let windth = UIScreen.main.bounds.width
