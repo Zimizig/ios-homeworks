@@ -94,21 +94,26 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc func animate() {
-        UIView.animate(withDuration: 0.5) {
+      
+        UIView.animate(withDuration: 0.5, delay: 0) {
             self.profileUIImageView.layer.cornerRadius = 0
             let centerX =  UIScreen.main.bounds.midX
             let cenerY = UIScreen.main.bounds.midY
             let windth = UIScreen.main.bounds.width
-            
-            self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = true
-            
-            
-            //self.profileUIImageView.heightAnchor.constraint(equalToConstant: windth).isActive = true
-            //self.profileUIImageView.widthAnchor.constraint(equalToConstant: windth).isActive = true
-            
-            self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
         }
+        
+        
+        
     }
+    
+    
+    /*
+    
+    
+    self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
+     */
+    
+    
     
     private func setupView() {
         addSubview(statusTextField)

@@ -58,10 +58,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if section == 0 {
             return 1
-            
         } else {
             return posts.count
         }
@@ -70,27 +68,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PostTableViewCell
         let photoCell = tableView.dequeueReusableCell(withIdentifier: "photoCell") as! PhotoTableViewCell
-        
         if indexPath.section == 0 {
             photoCell.delegate = self
             return photoCell
         } else {
             cell.configure(post: posts[indexPath.row])
             return cell
-            
         }
     }
     
-    
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(PhotoViewController(), animated: true)
-    }
-    */
-  
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         if section == 0 {
             let header = ProfileHeaderView(reuseIdentifier: "header")
             return header
@@ -100,14 +87,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.section == 0 {
             return 200
-          
         } else {
             let rowHeight = UIScreen.main.bounds.height - 120
              return rowHeight
-            
         }
         
     }
@@ -115,11 +99,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ProfileViewController: NavigateToPhotoVCDelegate {
     func navigate() {
-        //let photoNC = UINavigationController(rootViewController: PhotoViewController())
-        
         navigationController?.pushViewController(PhotoViewController(), animated: true)
     }
-    
-    
 }
 
