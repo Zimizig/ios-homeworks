@@ -101,14 +101,18 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         let centerX =  UIScreen.main.bounds.midX
         let cenerY = UIScreen.main.bounds.midY
         let windth = UIScreen.main.bounds.width
+        let height = UIScreen.main.bounds.height
         
         UIView.animate(withDuration: 0.5, delay: 0) {
             self.profileUIImageView.layer.cornerRadius = 0
+            self.profileUIButton.isHidden = true
         } completion: { bool in
             UIView.animate(withDuration: 0.5) {
                 self.profileUIImageView.translatesAutoresizingMaskIntoConstraints = true
-                self.profileUIImageView.frame.size = CGSize(width: windth, height: windth)
+                self.profileUIImageView.frame.size = CGSize(width: windth, height: height)
+                self.profileUIImageView.contentMode = .scaleAspectFit
                 self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
+                self.profileUIImageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.9)
             }
         }
     }
