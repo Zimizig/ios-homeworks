@@ -58,7 +58,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         image.layer.borderColor = UIColor.white.cgColor
         image.clipsToBounds = true
         image.image = UIImage(named: "15")
-        let gesture = UIGestureRecognizer(target: self, action: #selector(animate))
+        image.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(animate))
         image.addGestureRecognizer(gesture)
         return image
     }()
@@ -94,7 +95,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     @objc func animate() {
         UIView.animate(withDuration: 0.5) {
-            self.profileUIImageView.alpha = 0
+            self.profileUIImageView.layer.cornerRadius = 0
+            let centerX =  UIScreen.main.bounds.midX
+            let cenerY = UIScreen.main.bounds.midY
+            self.profileUIImageView.center = CGPoint(x: centerX, y: cenerY)
         }
     }
     
