@@ -41,6 +41,7 @@ class PostTableViewCell: UITableViewCell {
     var likesLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.backgroundColor = .cyan
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -69,6 +70,7 @@ class PostTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
+        stackView.backgroundColor = .cyan
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -97,11 +99,11 @@ class PostTableViewCell: UITableViewCell {
         vStack.addArrangedSubview(authorLabel)
         vStack.addArrangedSubview(postImageView)
         vStack.addArrangedSubview(descriptionText)
-        hStack.addArrangedSubview(likesLabel)
-        hStack.addArrangedSubview(viewsLabel)
+        //vStack.addArrangedSubview(likesLabel)
+        //hStack.addArrangedSubview(viewsLabel)
         
         contentView.addSubview(vStack)
-        contentView.addSubview(hStack)
+        
     }
     
     private func setConstraints() {
@@ -109,27 +111,33 @@ class PostTableViewCell: UITableViewCell {
         authorLabel.topAnchor.constraint(equalTo: vStack.topAnchor).isActive = true
         authorLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
         authorLabel.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
-        authorLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        authorLabel.bottomAnchor.constraint(equalTo: postImageView.topAnchor, constant: 0).isActive = true
+        authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 0).isActive = true
-        postImageView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor , constant: 0).isActive = true
+        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor).isActive = true
         postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
         postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
+        postImageView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: descriptionText.bottomAnchor).isActive = true
         
-        descriptionText.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 0).isActive = true
-        descriptionText.bottomAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
+        descriptionText.topAnchor.constraint(equalTo: postImageView.topAnchor, constant: 0).isActive = true
         descriptionText.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 16).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -16).isActive = true
+        //descriptionText.heightAnchor.constraint(equalToConstant: 120).isActive = true
+
+        /*
+        likesLabel.topAnchor.constraint(equalTo: descriptionText.bottomAnchor).isActive = true
+        likesLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
+        likesLabel.widthAnchor.constraint(equalToConstant: vStack.frame.width/2).isActive = true
+        likesLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        likesLabel.bottomAnchor.constraint(equalTo: vStack.bottomAnchor).isActive = true
+        */
         
-        vStack.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        vStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        
-        hStack.topAnchor.constraint(equalTo: vStack.bottomAnchor, constant: 0).isActive = true
-        hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        
+    
+        vStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        vStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        vStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        vStack.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+     
     }
 }

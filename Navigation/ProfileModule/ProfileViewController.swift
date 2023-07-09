@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController {
     
     var posts = PostModel.getPosts()
     
-    
     lazy private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -93,8 +92,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let rowHeight = UIScreen.main.bounds.height - 120
              return rowHeight
         }
-        
     }
+    
 }
 
 extension ProfileViewController: NavigateToPhotoVCDelegate {
