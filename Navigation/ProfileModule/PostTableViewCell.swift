@@ -9,41 +9,43 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
-    var authorLabel: UILabel = {
-        let label = UILabel()
+    let width = UIScreen.main.bounds.width
+    
+    lazy var authorLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: width))
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor.black
         label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-    
+        label.backgroundColor = .green
+        label.contentMode = .bottomLeft
+        
         return label
     }()
     
-    var postImageView: UIImageView = {
-        let width = UIScreen.main.bounds.width
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+   lazy var postImageView: UIImageView = {
+        
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
+        image.contentMode = .scaleAspectFill
         image.backgroundColor = .black
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
-    var descriptionText: UILabel = {
-        let label = UILabel()
+     lazy var descriptionText: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: (width - 64), height: width))
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = UIColor.systemGray
         label.textAlignment = .left
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
-    var likesLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.backgroundColor = .cyan
+   lazy var likesLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 50))
+        label.textAlignment = .center
+        label.backgroundColor = .blue
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -52,29 +54,30 @@ class PostTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = UIColor.black
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .cyan
+        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let vStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 100
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
-    private let hStack: UIStackView = {
+    private var hStack: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.backgroundColor = .cyan
+        stackView.spacing = 8
+        //stackView.backgroundColor = .red
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+        
     }()
-    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -99,41 +102,14 @@ class PostTableViewCell: UITableViewCell {
         vStack.addArrangedSubview(authorLabel)
         vStack.addArrangedSubview(postImageView)
         vStack.addArrangedSubview(descriptionText)
-        //vStack.addArrangedSubview(likesLabel)
-        //hStack.addArrangedSubview(viewsLabel)
-        
+        hStack.addArrangedSubview(likesLabel)
+        hStack.addArrangedSubview(viewsLabel)
+        vStack.addArrangedSubview(hStack)
         contentView.addSubview(vStack)
-        
     }
     
     private func setConstraints() {
-        
-        authorLabel.topAnchor.constraint(equalTo: vStack.topAnchor).isActive = true
-        authorLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
-        authorLabel.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
-        authorLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor).isActive = true
-        postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
-        postImageView.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
-        postImageView.trailingAnchor.constraint(equalTo: vStack.trailingAnchor).isActive = true
-        postImageView.bottomAnchor.constraint(equalTo: descriptionText.bottomAnchor).isActive = true
-        
-        descriptionText.topAnchor.constraint(equalTo: postImageView.topAnchor, constant: 0).isActive = true
-        descriptionText.leadingAnchor.constraint(equalTo: vStack.leadingAnchor, constant: 16).isActive = true
-        descriptionText.trailingAnchor.constraint(equalTo: vStack.trailingAnchor, constant: -16).isActive = true
-        //descriptionText.heightAnchor.constraint(equalToConstant: 120).isActive = true
 
-        /*
-        likesLabel.topAnchor.constraint(equalTo: descriptionText.bottomAnchor).isActive = true
-        likesLabel.leadingAnchor.constraint(equalTo: vStack.leadingAnchor).isActive = true
-        likesLabel.widthAnchor.constraint(equalToConstant: vStack.frame.width/2).isActive = true
-        likesLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        likesLabel.bottomAnchor.constraint(equalTo: vStack.bottomAnchor).isActive = true
-        */
-        
-    
         vStack.topAnchor.constraint(equalTo: topAnchor).isActive = true
         vStack.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         vStack.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
