@@ -36,7 +36,6 @@ class PostTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = UIColor.systemGray
         label.textAlignment = .left
-        
         return label
     }()
     
@@ -94,7 +93,14 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = UIImage(named: post.image)
         descriptionText.text = post.description
         likesLabel.text = String("Likes: \(post.likes)")
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(putLike))
+        likesLabel.addGestureRecognizer(gesture)
+        
         viewsLabel.text = String("Views: \(post.views)")
+    }
+    
+    @objc func putLike(likes: Int){
+        let plusLikes = likes + 1
     }
     
     private func setupViews() {
