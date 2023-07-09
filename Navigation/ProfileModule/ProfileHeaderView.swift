@@ -81,7 +81,13 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     private lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
+        let image = UIImage(systemName: "xmark")
+        button.setImage(image, for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = 10
+        button.layer.borderColor = UIColor.white.cgColor
+        button.alpha = 0.5
+        button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(rewardAnimation), for: .touchUpInside)
         return button
@@ -145,6 +151,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(closeButton)
         addSubview(profileUIButton)
         
+        closeButton.isHidden = true
         
         NSLayoutConstraint.activate([
             
@@ -174,7 +181,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             statusTextField.topAnchor.constraint(equalTo: profileStatuslabel.bottomAnchor, constant: 10),
             statusTextField.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 10),
             
-            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            closeButton.topAnchor.constraint(equalTo: topAnchor, constant: UIScreen.main.bounds.height/5),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             closeButton.widthAnchor.constraint(equalToConstant: 50),
             closeButton.heightAnchor.constraint(equalToConstant: 50)
