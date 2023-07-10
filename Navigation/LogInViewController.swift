@@ -123,8 +123,33 @@ class LogInViewController: UIViewController {
     
     
     @objc func buttonPressed() {
-        let profileVC = ProfileViewController()
-        navigationController?.pushViewController(profileVC, animated: true)
+        
+        if loginTextField.text == "" {
+            
+            UIView.animate(withDuration: 0.5) {
+                self.loginTextField.backgroundColor = UIColor.red
+            } completion: { bool in
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.loginTextField.backgroundColor = UIColor.systemGray6
+                }
+                
+        }
+    }      else if passwordTextField.text == "" {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.passwordTextField.backgroundColor = .red
+        } completion: { bool in
+            UIView.animate(withDuration: 0.5) {
+                self.passwordTextField.backgroundColor = UIColor.systemGray6
+            }
+    }
+        
+        } else {
+            let profileVC = ProfileViewController()
+            navigationController?.pushViewController(profileVC, animated: true)
+        }
+        
     }
     
 
