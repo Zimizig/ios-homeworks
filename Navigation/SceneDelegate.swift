@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createSecondController() -> UINavigationController {
-        let SecondNC = UINavigationController(rootViewController: PhotoViewController())
+        let SecondNC = UINavigationController(rootViewController: LogInViewController())
 
         //SecondNC.navigationBar.tintColor = .white
         //SecondNC.navigationBar.isTranslucent = true

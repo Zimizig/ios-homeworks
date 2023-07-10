@@ -105,8 +105,6 @@ extension PhotoViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.center = cellCenter
                 
             }
-            
-            
         }
     
     }

@@ -15,9 +15,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         image.layer.cornerRadius = 6
         image.clipsToBounds = true
         image.contentMode = .scaleAspectFit
-        //image.isUserInteractionEnabled = true
-        //let gesture = UITapGestureRecognizer(target: self, action: #selector(animate))
-        //image.addGestureRecognizer(gesture)
         image.translatesAutoresizingMaskIntoConstraints = false
         
         return image
@@ -34,7 +31,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         button.layer.borderWidth = 1
         button.isHidden = true
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(rewardAnimation), for: .touchUpInside)
         return button
     }()
     
@@ -56,20 +52,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     }
     
-    
-    
-    
-    @objc func rewardAnimation(){
-        
-        UIView.animate(withDuration: 0.5, delay: 0) {
-            self.imageView.frame.size = CGSize(width: 120, height: 120)
-            self.imageView.layer.cornerRadius = 6
-            self.closeButton.isHidden = true
-            self.imageView.translatesAutoresizingMaskIntoConstraints = false
-        } completion: { bool in
-            self.imageView.isHidden = false
-        }
-    }
+
 }
 
 

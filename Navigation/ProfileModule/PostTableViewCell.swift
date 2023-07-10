@@ -16,7 +16,7 @@ class PostTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor.black
         label.numberOfLines = 2
-        label.backgroundColor = .green
+        
         label.contentMode = .bottomLeft
         
         return label
@@ -45,7 +45,7 @@ class PostTableViewCell: UITableViewCell {
    lazy var likesLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: 50))
         label.textAlignment = .center
-        label.backgroundColor = .blue
+        
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action: #selector(putLike))
@@ -58,8 +58,7 @@ class PostTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = UIColor.black
-        label.backgroundColor = .cyan
-        //label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
