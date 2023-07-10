@@ -85,6 +85,7 @@ class LogInViewController: UIViewController {
         return button
     }()
     
+    private let user = User.getPasswordAndLogin()
     
     var isShowingKeybord = false
     
@@ -138,18 +139,14 @@ class LogInViewController: UIViewController {
     @objc func buttonPressed() {
         
         if loginTextField.text == "" {
-            
             UIView.animate(withDuration: 0.5) {
                 self.loginTextField.backgroundColor = UIColor.red
             } completion: { bool in
-                
                 UIView.animate(withDuration: 0.5) {
                     self.loginTextField.backgroundColor = UIColor.systemGray6
                 }
-                
         }
     }      else if passwordTextField.text == "" {
-        
         UIView.animate(withDuration: 0.5) {
             self.passwordTextField.backgroundColor = .red
         } completion: { bool in
@@ -157,12 +154,16 @@ class LogInViewController: UIViewController {
                 self.passwordTextField.backgroundColor = UIColor.systemGray6
             }
     }
-        
+        } else if loginTextField.text != user.login || passwordTextField.text != user.password  {
+            print("WrongPasswordOrLogin")
+            let alert = UIAlertController(title: "Wrong data", message: "Login: user, Password: password", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(alertAction)
+            present(alert, animated: true)
         } else {
             let profileVC = ProfileViewController()
             navigationController?.pushViewController(profileVC, animated: true)
         }
-        
     }
     
 
@@ -205,7 +206,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == passwordTextField {
             let text = textField.text as! NSString
-            if text.length < 7 {
+            if text.length < 8 {
                 shortPasswordLabel.isHidden = false
             } else {
                 shortPasswordLabel.isHidden = true
