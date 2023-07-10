@@ -91,9 +91,24 @@ extension PhotoViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
         cell.layer.zPosition = 1
         
-        cell.transform = CGAffineTransform(scaleX: 3, y: 3)
+        let cellCenter = cell.center
+        let newCellCenter = collectionView.center
+        let centerY = collectionView.frame.midY - 150
         
-        
+        UIView.animate(withDuration: 0.5) {
+            cell.center = CGPoint(x: collectionView.frame.midX, y: centerY)
+            cell.transform = CGAffineTransform(scaleX: 3, y: 3)
+        } completion: { bool in
+            
+            UIView.animate(withDuration: 0.5,delay: 2) {
+                cell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                cell.center = cellCenter
+                
+            }
+            
+            
+        }
+    
     }
     
     
