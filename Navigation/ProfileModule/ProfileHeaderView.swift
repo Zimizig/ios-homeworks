@@ -93,8 +93,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    
-
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupView()
@@ -105,7 +103,11 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     @objc private func printStatus() {
-        print(profileStatuslabel.text ?? "")
+        if statusTextField.text == "" {
+            statusTextField.backgroundColor = UIColor.red
+        } else {
+            print(profileStatuslabel.text ?? "")
+        }
     }
     
     @objc func animate() {
@@ -164,7 +166,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             profileNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             profileNameLabel.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 16),
             profileNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
             
             profileStatuslabel.leadingAnchor.constraint(equalTo: profileUIImageView.trailingAnchor, constant: 16),
             profileStatuslabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
