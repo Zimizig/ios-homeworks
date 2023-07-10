@@ -187,6 +187,23 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         button.alpha = 1
         
     }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == passwordTextField {
+            let text = textField.text as! NSString
+            if text.length < 7 {
+                //AddLabel
+                //ShowLabel 
+                
+            } else {
+                
+            }
+            
+        }
+        
+        return true
+    }
 
 }
 
