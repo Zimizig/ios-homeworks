@@ -45,9 +45,21 @@ class LogInViewController: UIViewController {
         textField.isSecureTextEntry = true
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.delegate = self
-        //textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
+        let leftLabel = UILabel()
+        leftLabel.text = "password is too short"
+       
         textField.autocapitalizationType = .none
         return textField
+    }()
+    
+    
+    private lazy var shortPasswordLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: passwordTextField.frame.width/2 , height: 50))
+        label.text = "too shortPassword"
+        label.backgroundColor = .black
+        label.textColor = .white
+        label.isHidden = true
+        return label
     }()
     
     let textFieldsStackView: UIStackView = {
@@ -88,6 +100,7 @@ class LogInViewController: UIViewController {
         self.view.addSubview(imageView)
         textFieldsStackView.addArrangedSubview(loginTextField)
         textFieldsStackView.addArrangedSubview(passwordTextField)
+        textFieldsStackView.addArrangedSubview(shortPasswordLabel)
         self.view.addSubview(textFieldsStackView)
         self.view.addSubview(button)
         
@@ -193,13 +206,10 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if textField == passwordTextField {
             let text = textField.text as! NSString
             if text.length < 7 {
-                //AddLabel
-                //ShowLabel 
-                
+                shortPasswordLabel.isHidden = false
             } else {
-                
+                shortPasswordLabel.isHidden = true
             }
-            
         }
         
         return true
