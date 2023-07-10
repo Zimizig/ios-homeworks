@@ -27,6 +27,9 @@ class PostTableViewCell: UITableViewCell {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: width))
         image.contentMode = .scaleAspectFill
         image.backgroundColor = .black
+       image.isUserInteractionEnabled = true
+       let gesture = UITapGestureRecognizer(target: self, action: #selector(goToDetail))
+        image.addGestureRecognizer(gesture)
         return image
     }()
     
@@ -44,7 +47,9 @@ class PostTableViewCell: UITableViewCell {
         label.textAlignment = .center
         label.backgroundColor = .blue
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        
+        label.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(putLike))
+        label.addGestureRecognizer(gesture)
         return label
     }()
     
@@ -72,11 +77,12 @@ class PostTableViewCell: UITableViewCell {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 8
-        //stackView.backgroundColor = .red
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
         
     }()
+    
+    var delegate: AddLikeDelegate!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -93,14 +99,15 @@ class PostTableViewCell: UITableViewCell {
         postImageView.image = UIImage(named: post.image)
         descriptionText.text = post.description
         likesLabel.text = String("Likes: \(post.likes)")
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(putLike))
-        likesLabel.addGestureRecognizer(gesture)
-        
         viewsLabel.text = String("Views: \(post.views)")
     }
     
-    @objc func putLike(likes: Int){
-        let plusLikes = likes + 1
+    @objc func putLike() {
+        delegate.addLike()
+    }
+    
+    @objc func goToDetail() {
+        delegate.navigateToDetail()
     }
     
     private func setupViews() {

@@ -22,9 +22,4 @@ class PostViewController: UIViewController {
         let vc = InfoViewController()
         present(vc, animated: true)
     }
-    /*
-    func setPost(post: Post) {
-        self.post = post
-    }
-    */
 }

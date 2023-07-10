@@ -11,6 +11,8 @@
 		047BE0DB2A52FA1300517224 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047BE0DA2A52FA1300517224 /* PostTableViewCell.swift */; };
 		049170442A586BD20007C4C9 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049170432A586BD20007C4C9 /* PhotoViewController.swift */; };
 		049170472A586FD40007C4C9 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049170462A586FD40007C4C9 /* PhotoCollectionViewCell.swift */; };
+		04CBDFF02A5B926F00E3EB1C /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDFEF2A5B926F00E3EB1C /* Protocols.swift */; };
+		04CBDFF22A5C218400E3EB1C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDFF12A5C218400E3EB1C /* DetailViewController.swift */; };
 		04CF2B382A562B06007BCDAB /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF2B372A562B06007BCDAB /* TestViewController.swift */; };
 		04CF2B3B2A562C43007BCDAB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF2B3A2A562C43007BCDAB /* TableViewCell.swift */; };
 		04CF2B3D2A562F88007BCDAB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF2B3C2A562F88007BCDAB /* CollectionViewCell.swift */; };
@@ -32,6 +34,8 @@
 		047BE0DA2A52FA1300517224 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		049170432A586BD20007C4C9 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		049170462A586FD40007C4C9 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		04CBDFEF2A5B926F00E3EB1C /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		04CBDFF12A5C218400E3EB1C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		04CF2B372A562B06007BCDAB /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		04CF2B3A2A562C43007BCDAB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		04CF2B3C2A562F88007BCDAB /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				2C239C7529FF1F3000A58FB3 /* ProfileViewController.swift */,
+				04CBDFEF2A5B926F00E3EB1C /* Protocols.swift */,
+				04CBDFF12A5C218400E3EB1C /* DetailViewController.swift */,
 				2C082E422992945A00EBB9DE /* Post.swift */,
 				047BE0DA2A52FA1300517224 /* PostTableViewCell.swift */,
 				04D4D6A82A55A3C0007FC607 /* PhotoTableViewCell.swift */,
@@ -214,12 +220,14 @@
 				2C6CD995298B135E005266E3 /* SceneDelegate.swift in Sources */,
 				2C239C7129FF155A00A58FB3 /* ProfileHeaderView.swift in Sources */,
 				2C082E432992945A00EBB9DE /* Post.swift in Sources */,
+				04CBDFF22A5C218400E3EB1C /* DetailViewController.swift in Sources */,
 				049170472A586FD40007C4C9 /* PhotoCollectionViewCell.swift in Sources */,
 				04CF2B3D2A562F88007BCDAB /* CollectionViewCell.swift in Sources */,
 				04D4D6A92A55A3C0007FC607 /* PhotoTableViewCell.swift in Sources */,
 				2C082E4529929BD600EBB9DE /* InfoViewController.swift in Sources */,
 				047BE0D92A51D14A00517224 /* LogInViewController.swift in Sources */,
 				2C9D73282991DB25006F52FC /* FeedViewController.swift in Sources */,
+				04CBDFF02A5B926F00E3EB1C /* Protocols.swift in Sources */,
 				049170442A586BD20007C4C9 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

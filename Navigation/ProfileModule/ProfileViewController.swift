@@ -8,9 +8,7 @@
 import UIKit
 
 
-protocol NavigateToPhotoVCDelegate {
-    func navigate()
-}
+
 
 class ProfileViewController: UIViewController {
     
@@ -39,6 +37,7 @@ class ProfileViewController: UIViewController {
     private func setUIElements() {
         self.view.addSubview(tableView)
     }
+    
     
     private func setConstraints() {
         tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -72,6 +71,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return photoCell
         } else {
             cell.configure(post: posts[indexPath.row])
+            cell.delegate = self
             return cell
         }
     }
@@ -100,5 +100,23 @@ extension ProfileViewController: NavigateToPhotoVCDelegate {
     func navigate() {
         navigationController?.pushViewController(PhotoViewController(), animated: true)
     }
+}
+
+extension ProfileViewController: AddLikeDelegate {
+    func navigateToDetail() {
+        guard let indexPath =  self.tableView.indexPathForSelectedRow else {return}
+        self.posts[indexPath.row].views += 1
+        self.tableView.reloadData()
+        print("GOOOOO TOOO VCCCCCCCCC")
+        navigationController?.pushViewController(DetailViewController(), animated: true)
+    }
+    
+    func addLike() {
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {return}
+            self.posts[indexPath.row].likes += 1
+            self.tableView.reloadData()
+    }
+    
+    
 }
 
