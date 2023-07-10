@@ -70,7 +70,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         button.setTitle("Show status", for: .normal)
         button.titleLabel?.textColor = .white
         button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 17        //Реальное значение радиуса на макете отличается!
+        button.layer.cornerRadius = 17
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowOpacity = 0.7
@@ -130,6 +130,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             }
         }
     }
+    
     
     @objc func rewardAnimation(){
         

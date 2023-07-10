@@ -37,11 +37,14 @@ class PhotoViewController: UIViewController, UINavigationBarDelegate {
         return navbar
     }()
     
+    
+    
     private var photos = PhotoModel.getPhotos()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        
         self.title = "Gallery"
         setupCollectionView()
         
@@ -51,7 +54,6 @@ class PhotoViewController: UIViewController, UINavigationBarDelegate {
         navigationController?.popViewController(animated: true)
     }
  
-    
     
     private func setupCollectionView() {
         
@@ -63,6 +65,9 @@ class PhotoViewController: UIViewController, UINavigationBarDelegate {
         collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0).isActive = true
         collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: 0).isActive = true
     }
+
+    
+
     
 }
 
@@ -78,6 +83,19 @@ extension PhotoViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.imageView.backgroundColor = .black
         cell.imageView.image = UIImage(named: photos[indexPath.item].photoName)
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
+        cell.transform = CGAffineTransform(scaleX: 3, y: 3)
+        let removedPhoto = photos.remove(at: indexPath.item)
+        let lastPhoto = photos.append(removedPhoto)
+        collectionView.reloadData()
+        
+        
+        
     }
     
     
