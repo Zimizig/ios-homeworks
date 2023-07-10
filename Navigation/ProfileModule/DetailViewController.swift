@@ -9,8 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController, UINavigationBarDelegate {
 
-    private let windth = UIScreen.main.bounds.width
-    private let height = UIScreen.main.bounds.height
+    var titleText: String!
+    var text: String!
     
     private lazy var navigationBar: UINavigationBar = {
         let height: CGFloat = 75
@@ -19,7 +19,7 @@ class DetailViewController: UIViewController, UINavigationBarDelegate {
         navbar.delegate = self
 
         let navItem = UINavigationItem()
-        navItem.title = "Post"
+        navItem.title = titleText
         navItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(popVC))
         navbar.setItems([navItem], animated: true)
         return navbar
@@ -27,12 +27,15 @@ class DetailViewController: UIViewController, UINavigationBarDelegate {
     
     
     lazy var descriptionText: UILabel = {
-       let label = UILabel(frame: CGRect(x: 0, y: 0, width: (windth), height: height))
+       let label = UILabel()
        label.numberOfLines = 0
-       label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-       label.textColor = UIColor.systemGray
-        label.backgroundColor = .cyan
+       label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+       label.textColor = UIColor.black
+       label.text = text
+       //label.backgroundColor = .cyan
+       label.translatesAutoresizingMaskIntoConstraints = false
        label.textAlignment = .left
+        label.contentMode = .topLeft
        return label
    }()
     
@@ -44,12 +47,15 @@ class DetailViewController: UIViewController, UINavigationBarDelegate {
     
     private func setUI() {
         self.view.addSubview(navigationBar)
-       // self.view.addSubview(descriptionText)
+        self.view.addSubview(descriptionText)
+        
+        descriptionText.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 75).isActive = true
+        descriptionText.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,constant: 16).isActive = true
+        descriptionText.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor,constant: -16).isActive = true
+        descriptionText.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     @objc func popVC(){
         navigationController?.popViewController(animated: true)
     }
-    
-
 }

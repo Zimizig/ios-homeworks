@@ -108,7 +108,12 @@ extension ProfileViewController: AddLikeDelegate {
         self.posts[indexPath.row].views += 1
         self.tableView.reloadData()
         print("GOOOOO TOOO VCCCCCCCCC")
-        navigationController?.pushViewController(DetailViewController(), animated: true)
+        let detailVC = DetailViewController()
+        let author = self.posts[indexPath.row].author
+        let post = self.posts[indexPath.row].description
+        detailVC.titleText = author
+        detailVC.text = post
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func addLike() {
