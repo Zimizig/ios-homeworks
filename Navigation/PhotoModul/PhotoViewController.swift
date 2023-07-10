@@ -89,11 +89,9 @@ extension PhotoViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
-        cell.transform = CGAffineTransform(scaleX: 3, y: 3)
-        let removedPhoto = photos.remove(at: indexPath.item)
-        let lastPhoto = photos.append(removedPhoto)
-        collectionView.reloadData()
+        cell.layer.zPosition = 1
         
+        cell.transform = CGAffineTransform(scaleX: 3, y: 3)
         
         
     }
